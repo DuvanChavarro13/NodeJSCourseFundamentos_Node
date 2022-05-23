@@ -25,3 +25,16 @@ function imprimeHeroe( { nombre, apellido, poder, edad=0 } ){
 }
 imprimeHeroe( deadpool );
 
+// -------------------------------------------------------------------------------------------------------------
+// TAMBIEN SE PUEDE DESESTRUCTURAR DESDE LOS ARREGLOS 
+//Forma normal
+const heroes = ['Deadpool', 'Superman', 'Batman'];
+const heroe1 = heroes[0];
+const heroe2 = heroes[1];
+console.log(heroe1, heroe2);
+
+//Con Desestructuracion
+const [ , , h3] = heroes;
+//console.log(h1, h2, h3);
+//Para imprimir solo un objeto del arreglo en específico
+console.log(h3);
