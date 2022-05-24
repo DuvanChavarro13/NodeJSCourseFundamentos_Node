@@ -1,4 +1,3 @@
-// ESTO OFRECE UNA SOLUCIÓN A EVITAR EL CALLBACK-HELL {INFIERNO DEL CALLBACK}
 const empleados = [
     {
         id: 1, 
@@ -46,45 +45,4 @@ const getSalario = ( id ) => {
             ? resolve( salario )
             : reject( `No hay ningun salario para el id ${id}` ) 
     } );  
-
 }
-
-//-----------------------------------------------------------------------------------------------
-
-const id= 3;
-/*
-getEmpleado(id)
-    //Esto quiere decir que cuando se ejectute la función, pues el then, es que cuando esto se
-    //resuelva, el resolve me va a traer un empleado, y lo único que se hace luego es el console.log()
-    .then( empleado => console.log( empleado )) 
-//NOTA: La promesa siempre debe tener manejado el catch, sino, esto dará error
-    .catch( err => console.log( err ))
-
-
-getSalario(id)
-    .then( salario => console.log( salario )) 
-    .catch( err => console.log( err ))
-*/
-
-//-----------------------------------------------------------------
-// PROMESAS EN CADENA 
-/*Forma alterna
-getEmpleado( id )
-    .then( empleado => getSalario( id ) ) 
-    .then( salario => console.log( salario) );
-*/
-
-//Forma completa
-let nombre;
-getEmpleado( id )
-    .then( empleado => { // Este Callback regresa una promesa
-        nombre = empleado;
-        return getSalario( id );
-    }) 
-    .then( salario => {
-        console.log( `El empleado ${nombre}, tiene un salario de ${salario}` );
-    } ) 
-    .catch( err => console.log( err ) ); 
-
-
-        
