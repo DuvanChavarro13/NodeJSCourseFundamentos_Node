@@ -46,3 +46,35 @@ const getSalario = ( id ) => {
             : reject( `No hay ningun salario para el id ${id}` ) 
     } );  
 }
+
+// -------------------------------------------------------------------------------------------
+/* ASYNC - AWAIT -> Son terminos populares que rodea el mundo de las promesas
+Cuando se le agrega el async a una función es TRANSFORMAR una función para que regrese
+una PROMESA
+NOTA: La palabra reservada: await se puede escribir solo en el cuerpo de una función asíncrona*/
+const getInfoUsuario = async( id ) => { //Función asíncrona agregando el async que retorna una promesa
+    try {
+        const empleado = await getEmpleado( id );
+        const salario = await getSalario( id );
+        return `El salario del empleado ${empleado} es de ${salario}`;   
+    } catch (error) {
+        throw error;
+    } 
+}
+
+const id = 2; 
+getInfoUsuario( id )
+    .then( msg => {
+        console.log('TODO BIEN!');
+        console.log( msg ) 
+    })
+    .catch( err => {
+        console.log('TODO MAL!');
+        console.log( err ) 
+    });
+
+
+
+
+
+
