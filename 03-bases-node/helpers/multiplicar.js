@@ -1,17 +1,22 @@
 const fs = require('fs');
+const colors = require('colors');
+const { number } = require('yargs');
 
-const crearArchivo = async( b = 5, listar = false ) => {
+const crearArchivo = async( b = 5, listar = false, h ) => {
     
     try {
-        let salida = '';
-
-        for (let i = 1; i <=10 ; i++) {
+        let consola, salida = '';
+        
+        for (let i = 1; i <=h ; i++) {
+            consola += `${b} ${ 'x'.green } ${i} ${ '='.green } ${b*i}\n` ;
             salida += `${b} x ${i} = ${b*i}\n` ;
         }
 
         if ( listar ){
-            console.log(`TABLA DEL ${b} `);
-            console.log( salida );
+            console.log('=============='.green);
+            console.log('TABLA DEL:'.green, colors.blue(b));
+            console.log('=============='.green);
+            console.log( consola );
         }
 
         //Uso de la función writeFileSyinc
