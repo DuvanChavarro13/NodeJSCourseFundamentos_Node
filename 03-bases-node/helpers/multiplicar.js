@@ -5,7 +5,8 @@ const { number } = require('yargs');
 const crearArchivo = async( b = 5, listar = false, h ) => {
     
     try {
-        let consola, salida = '';
+        let consola = '';
+        let salida = '';
         
         for (let i = 1; i <=h ; i++) {
             consola += `${b} ${ 'x'.green } ${i} ${ '='.green } ${b*i}\n` ;
@@ -20,7 +21,7 @@ const crearArchivo = async( b = 5, listar = false, h ) => {
         }
 
         //Uso de la función writeFileSyinc
-        fs.writeFileSync( `tabla-${b}.txt`, salida);
+        fs.writeFileSync( `./salida/tabla-${b}.txt`, salida);
 
         return `Tabla-${b}.txt`;
         
