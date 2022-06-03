@@ -6,8 +6,6 @@ console.clear();
 
 const main = async() => {
      
-    console.log('Holaaa');
-
     let opt = '';
 
     do {
