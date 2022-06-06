@@ -10,11 +10,11 @@ const preguntas = [
         choices: [
             {
                 value: '1',
-                name: '1. Crear tarea'
+                name: `${'1.'.green} Crear tarea`
             },
             {
                 value: '2',
-                name: '2. Listar tareas'
+                name: `${'2.'.green} Listar tareas`
             },
             {
                 value: '3',
@@ -43,9 +43,9 @@ const preguntas = [
 const inquirerMenu = async() => {
 
     console.clear();
-    console.log('======================'.green);
-    console.log('Seleccione una opción'.green);
-    console.log('======================\n'.green);
+    console.log('========================='.green);
+    console.log('  Seleccione una opción'.white);
+    console.log('=========================\n'.green);
 
     //inquirer trabaja en base a promesas, por lo tanto puedo hacer el await
     const { opcion } = await inquirer.prompt(preguntas);
@@ -80,7 +80,9 @@ const leerInput = async( message ) => {
         }
     ];
 
-    const { desc } = await inquirer.prompt(question);
+    /*El inquirer.prompt regresa un objeto (question ), por eso es que se desestructura solo la 
+    descripción para mostrar al usuario*/
+    const { desc } = await inquirer.prompt(question); 
     return desc;
 }
 

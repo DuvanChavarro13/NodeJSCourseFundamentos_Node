@@ -1,9 +1,11 @@
 const Tarea = require("./tarea");
 
-
 class Tareas {
 
-    _listado = {};
+    //Se almacenará mejor como un objeto y no como un arreglo
+    _listado = { 
+        //'askjjñsjdñkmskj' : 123 
+        };
 
     constructor(){
         this._listado = {};
@@ -12,7 +14,11 @@ class Tareas {
     crearTarea( desc = '' ) {
 
         const tarea = new Tarea( desc );
-        //De esta forma se insertan datos en el objeto listado
+
+        /*SI QUIERO HACER REFERENCIA A UNA PROPIEDAD DEL OBJETO LO COLOCO ENTRE LLAVES
+        Ejemplo
+        this._listado['askjjñsjdñkmskj'] //El id siempre será diferente gracias a UUID, y eso 
+                                           apunta a la tarea */
         this._listado[tarea.id] = tarea;
 
     }

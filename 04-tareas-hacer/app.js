@@ -6,9 +6,8 @@ const { inquirerMenu,
 
 const Tareas = require('./models/tareas');
 
-
 const main = async() => {
-     
+    
     let opt = '';
     const tareas = new Tareas();
 
@@ -20,7 +19,7 @@ const main = async() => {
             case '1':
                 //Crear opción
                 const desc = await leerInput('Descripción:');
-                console.log(desc);
+                console.log(`Tarea "${desc}" creada con éxito`);
                 tareas.crearTarea( desc );
                 break;
 
