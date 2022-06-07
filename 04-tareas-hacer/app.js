@@ -1,4 +1,5 @@
 require('colors');
+const { guardarDB, leerDB } = require('./helpers/guardarArchivo');
 const { inquirerMenu,
         pausa,
         leerInput
@@ -10,6 +11,12 @@ const main = async() => {
     
     let opt = '';
     const tareas = new Tareas();
+
+    const tareasDB = leerDB();
+
+    if ( tareasDB ){
+        //Establecer las tareas
+    }
 
     do {
 
@@ -25,12 +32,16 @@ const main = async() => {
 
             case '2':
                 //Listar tareas 
-                console.log(tareas._listado);
+                console.log(tareas.listadoArr);
                 break;
         
             default:
                 break;
         }
+
+        /*Se guarda la data siempre, y a pesar de seleccionar cualquier opción del switch siempre
+        y cuando involucre a la base de datos */
+        //guardarDB( tareas.listadoArr );
 
         await pausa();
 
