@@ -14,14 +14,13 @@ const main = async() => {
 
     const tareasDB = leerDB();
 
-    if ( tareasDB ){
-        //Establecer las tareas
+    if ( tareasDB ){ //cargar tareas
+        tareas.cargarTareasFromArray( tareasDB );
     }
 
     do {
-
         opt = await inquirerMenu();
-        console.log({ opt });
+        // console.log({ opt });
         switch ( opt ) {
             case '1':
                 //Crear opción
@@ -32,8 +31,18 @@ const main = async() => {
 
             case '2':
                 //Listar tareas 
-                console.log(tareas.listadoArr);
+                tareas.listadoCompleto();
                 break;
+
+            case '3':
+                //Listar tareas completadas
+                tareas.listarPendientesCompletadas( true );
+            break;
+
+            case '4':
+                //Listar tareas pendientes
+                tareas.listarPendientesCompletadas( false );
+            break;
         
             default:
                 break;
@@ -41,7 +50,7 @@ const main = async() => {
 
         /*Se guarda la data siempre, y a pesar de seleccionar cualquier opción del switch siempre
         y cuando involucre a la base de datos */
-        //guardarDB( tareas.listadoArr );
+        guardarDB( tareas.listadoArr );
 
         await pausa();
 

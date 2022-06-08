@@ -12,9 +12,10 @@ const leerDB = () =>{
         return null;
     }
     const info = fs.readFileSync( archivo, { encoding: 'utf-8'} ); 
-    console.log( info );
+    const data = JSON.parse( info ); 
+    // console.log(data);
 
-    return null;
+    return data;
 }
 
 module.exports = {
