@@ -90,14 +90,12 @@ const leerInput = async( message ) => {
 const listadoTareasBorrar = async( tareas = [] ) => {
     // Función .map() para obtener un nuevo arreglo 
     const choices = tareas.map( (tarea, i) => {
-
         const idx = `${i + 1}.`.green;
         return {
             value: tarea.id,
             name: `${ idx } ${ tarea.desc }`
         }
     });
-
     const preguntas = [
         {
             type: 'list',
@@ -106,7 +104,6 @@ const listadoTareasBorrar = async( tareas = [] ) => {
             choices 
         }
     ]
-
     const { id } = await inquirer.prompt( preguntas );
     return id;  
 }
