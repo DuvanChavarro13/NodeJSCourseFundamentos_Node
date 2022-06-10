@@ -67,4 +67,4 @@ const main = async() => {
     //pausa();
 }
 
-main(); 
+main();  
