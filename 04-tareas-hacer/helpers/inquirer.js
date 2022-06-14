@@ -96,6 +96,13 @@ const listadoTareasBorrar = async( tareas = [] ) => {
             name: `${ idx } ${ tarea.desc }`
         }
     });
+
+    //Para agregar un valor demás al arreglo
+    choices.unshift({
+        value: '0',
+        name: `${'0'.green} Cancelar`
+    })
+
     const preguntas = [
         {
             type: 'list',
@@ -125,5 +132,6 @@ module.exports = {
     inquirerMenu,
     pausa, 
     leerInput,
-    listadoTareasBorrar
+    listadoTareasBorrar,
+    confirmar
 }   
