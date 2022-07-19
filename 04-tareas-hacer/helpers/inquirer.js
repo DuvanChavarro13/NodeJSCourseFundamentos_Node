@@ -1,5 +1,4 @@
 const inquirer = require('inquirer');
-const ListPrompt = require('inquirer/lib/prompts/list');
 require('colors');
 
 const preguntas = [
@@ -71,20 +70,20 @@ const leerInput = async( message ) => {
             type: 'input',
             name: 'desc',
             message,
-            validate( value ){
+            validate( value ){ //--> Esto es para que mande si o si un valor en la descripción
                 if( value.length === 0 ){
-                    return "Por favor, ingrese un valor";
+                    return "Por favor, ingrese un valor"; //--> Error
                 }
-                return true; 
+                return true; //--> Validación pasó
             }
         }
     ];
-
     /*El inquirer.prompt regresa un objeto (question ), por eso es que se desestructura solo la 
     descripción para mostrar al usuario*/
     const { desc } = await inquirer.prompt(question); 
     return desc;
 }
+
 
 //Se reciben las tareas como un arreglo
 const listadoTareasBorrar = async( tareas = [] ) => {
