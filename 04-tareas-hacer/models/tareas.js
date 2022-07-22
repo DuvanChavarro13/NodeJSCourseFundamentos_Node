@@ -59,7 +59,7 @@ class Tareas {
                 //mostrar completadas
                 if ( completadoEn ){
                     contador += 1;
-                    console.log(`${ (contador + '.').green } ${ desc } :: Completada en ${ completadoEn }`);
+                    console.log(`${ (contador + '.').green } ${ desc } :: ${ completadoEn.green }`);
                 }
             }else{
                 //mostrar pendientes
@@ -75,6 +75,25 @@ class Tareas {
         if ( this._listado[id] ){
             delete this._listado[id];
         }
+    }
+
+    toggleCompletadas( ids = [] ){
+
+        ids.forEach( id => {
+            const tarea = this._listado[id];  //Extraer esa propiedad por id del objeto
+            if ( !tarea.completadoEn ) { //Si no tiene nada, es decir, si está en null
+                tarea.completadoEn = new Date().toISOString()
+            }
+        });
+
+        //Ahora marcar como NO Completadas, las tareas que vengan en ese arreglo
+        this.listadoArr.forEach( tarea => {
+            /*Si en el arreglo ids no incluye las tareas que se registran entonces, 
+            se modifica su estado se completado a null*/
+            if ( !ids.includes( tarea.id ) ){
+                this._listado[tarea.id].completadoEn = null;
+            }
+        });
     }
 
 }
