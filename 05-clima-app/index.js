@@ -8,7 +8,7 @@ const { leerInput,
  } = require('./helpers/inquirer');
 const Busquedas = require('./models/busquedas');
 
-//console.log( process.env.MAPBOX_KEY );
+//console.log( process.env );
 
 const main = async() => {
 
@@ -26,26 +26,37 @@ const main = async() => {
                 //Buscar lugares
                 const lugares = await busquedas.ciudad( termino );
 
-                //Seleccionar el lugar
+                //Seleccionar el lugar por id
                 const id = await listarLugares( lugares ); 
+                if ( id === '0' ) continue; //Validación para que continue el ciclo si selecciona opción cero
+
                 const lugarSel = lugares.find( l => l.id === id );
-                console.log( lugarSel );
+
+                //Guardar en DB
+                busquedas.agregarHistorial( lugarSel.nombre );
 
                 //Datos del clima
+                const clima = await busquedas.climaLugar( lugarSel.lat, lugarSel.lng );
 
                 //Mostrar resultados
-                console.log( '\nInformación de la ciudad\n'.green );
-                console.log( 'Ciudad: ', );
-                console.log( 'Lat: ', );
-                console.log( 'Lng: ', );
-                console.log( 'Temperatura: ', );
-                console.log( 'Mímnima: ', );
-                console.log( 'Máxima: ', );
+                console.clear();
+                console.log( '\nINFORMACIÓN DE LA CIUDAD\n'.green );
+                console.log( 'Ciudad: ' + `${ lugarSel.nombre }`.green );
+                console.log( 'Latitud: ' + `${ lugarSel.lat }`.green );
+                console.log( 'Longitud: ' + `${ lugarSel.lng }`.green );
+                console.log( 'Temperatura: ' + `${ clima.temp }`.green );
+                console.log( 'Mínima: ' + `${ clima.temp_min }`.green );
+                console.log( 'Máxima: ' + `${ clima.temp_max }`.green );
+                console.log( 'Descripción del clima: ' + `${ clima.desc }`.green);
             break;
 
             case 2:
-                console.log( "Seleccionó la opción 2" );
-                break;
+                busquedas.historialCapitalizado.forEach ( (lugar, i) =>{
+                    const idx = `${ i +1 }.`.green;
+                    console.log( `${ idx } ${ lugar }`);
+                }); 
+                
+            break;
         }
     
         await pausa();
