@@ -14,10 +14,10 @@ class Busquedas {
 
     get historialCapitalizado() {
         return this.historial.map( lugar => {
-            let palabras = lugar.split(' ');
+            let palabras = lugar.split(' '); //Cortar las palabras con un espacio
             palabras = palabras.map( p => p[0].toUpperCase() + p.substring(1) );
 
-            return palabras.join( ' ' )
+            return palabras.join( ' ' ) //Unir de nuevo el arreglo con un espacio
         }) 
     }
 
@@ -65,7 +65,7 @@ class Busquedas {
             //Instance axios.create()
             const instance = axios.create({
                 baseURL: `https://api.openweathermap.org/data/2.5/weather`,
-                params: { ...this.paramsOpenweather, lat, lon }
+                params: { ...this.paramsOpenweather, lat, lon } //Desestructuración de los parámetros y se le envía los otros argumentos
             })
             //resp.data
             const resp = await instance.get();

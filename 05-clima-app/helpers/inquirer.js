@@ -35,7 +35,7 @@ const inquirerMenu = async() => {
     return opcion;
 }
 
-const pausa = async() =>{
+const pausa = async() => {
 
     const question = [
         {

@@ -52,7 +52,7 @@ const main = async() => {
 
             case 2:
                 busquedas.historialCapitalizado.forEach ( (lugar, i) =>{
-                    const idx = `${ i +1 }.`.green;
+                    const idx = `${ i + 1 }.`.green;
                     console.log( `${ idx } ${ lugar }`);
                 }); 
                 
@@ -63,7 +63,7 @@ const main = async() => {
         
     } while ( opt !== 0 );
 
-    console.log( 'Se terminó el programa' );
+    console.log( ' == ¡SE TERMINÓ EL PROGRAMA! =='.green );
 
 }
 
