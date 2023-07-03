@@ -10,7 +10,8 @@ http.createServer( (req, res) => {
 
     const persona = {
         id: 1,
-        nombre: 'Duvan'
+        nombre: 'Duvan',
+        apellido: 'Chavarro'
     }
 
     res.write( JSON.stringify(persona));
