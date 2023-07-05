@@ -1,8 +1,8 @@
 
-const saludar = ( nombre ) => {
+const saludar2 = ( nombre ) => {
     return `Saludos ${ nombre }`; // 'Saludos ' + nombre;
 }
 
-console.log( saludar( 'Fernando' ) );
+console.log( saludar2( 'Fernando' ) );
 
 
